@@ -4,4 +4,4 @@ import socket
 
 @app.route('/')
 def hello_world():
-    return 'Hello World from %s!'%socket.gethostname()
+    return 'Hello World from the site : %s!'%socket.gethostname()

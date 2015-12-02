@@ -1,4 +1,10 @@
 #!/bin/sh
+SOURCE=$(realpath $(dirname $0))
+ROOT=$(dirname $SOURCE)
+
+docker build -t flask-site ${ROOT}/flask-balanced/site
+docker build -t balancer ${ROOT}/flask-balanced/balancer
+
 docker run -h site-01 --name flask-01 -d -p 5001:5001 flask-site gunicorn -w 4 -b 0.0.0.0:5001 main:app
 docker run -h site-02 --name flask-02 -d -p 5002:5002 flask-site gunicorn -w 4 -b 0.0.0.0:5002 main:app
 docker run -h site-03 --name flask-03 -d -p 5003:5003 flask-site gunicorn -w 4 -b 0.0.0.0:5003 main:app

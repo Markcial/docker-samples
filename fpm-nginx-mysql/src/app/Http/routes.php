@@ -12,7 +12,7 @@
 */
 
 $app->get('/', function () use ($app) {
-    return 'asdsad';// $app->welcome();
+    return $app->welcome();
 });
 
 use App\User;
